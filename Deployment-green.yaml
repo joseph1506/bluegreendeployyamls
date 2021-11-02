@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynginx-deployment-green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mynginx-green
+  template:
+    metadata:
+      labels:
+        app: mynginx-green
+    spec:
+      containers:
+      - name: mynginx-container
+        image: httpd
+        ports:
+        - containerPort: 80
+        imagePullPolicy: IfNotPresent
